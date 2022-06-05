@@ -10,6 +10,29 @@ To run the debruijn script, run the script in the terminal `$ sh debruijn.sh <re
 ### assembly.sh
 To run the assembly script, run the script in the terminal `$ sh assembly.sh <reads.txt> <vector.txt> <contam-k> <k-mer length> <k> <t> <d>`. Example: `sh assembly.sh test_cases/assembly/sampleReads.txt test_cases/assembly/vector.txt 10 30 17 2 2`. The shell script calls a python file that reads in k-mers from reads and decontaminates the reads with a given vector. The program finds the longest contig of these sequences and returns that sequence.
 
+
+## Contamination:
+The shell script takes in 3 parameters
+- The contaminated reads
+- The vector
+- The k value to create kmers
+
+This file runs very similar to BLAST where there is a seeding and extension phase. However, this only happens at the begining and end of the contaminated read. Thus, we only seed at the end, then extend in the corresponding direction of both the contaminated read and the vector. Once it reaches a comparison that does not match, we terminate. We return the new read that removes all the contamination.
+
+Contamination can be run with the following example command: `sh contamination.sh test_cases/contamination/contam_reads1.txt test_cases/contamination/vector1.txt 3`
+
+## Correction:
+The shell script takes in 4 parameters
+- The error reads
+- k = kmer length
+- t = threshold for frequent kmer
+- d = hamming distance threshold
+
+First we find a list of the most frequent k-mers. Then we run through all the reads and generate kmers from each of the read to find the uncommon kmers. Once we find all the uncommon kmers, we try to find the best kmer from the frequent kmer list to replace them using the distance variable d. Once we run through all unfrequent kmers in the current read and find the best corresponding repalcement (sorted by distance values and then by frequency), we look at how many uncommon kmers a replacement will create if an infrequent k-mer is replaced. From all the possible k-mers we can replace, we want choose to replace the uncommon kmer that creates the least amount of infrequent k-mers after it is replaced. In doing this, we optimize the replacement of all the infrequnet k-mers in a sequence. We the loop again to create more kmers of the new seqeunce and see if we can replace any more infrequent kmers. I set a max on the number of loops to be 5 because it has a very large runtime (ie. the application runtime is veryyyyy long). Once we replace all the infrequent kmers as well as the infrequent kmers that may have be generated from previous placements, we print out the new reads for a specific sequence. I only use the frequent kmer list when I first created it because it adding new kmers to that list could "infect" the rest of the seqeunces with a frequent kmer that never existed in the orgianl sequence. I also chose to use the sequence that causes the least amount of new infrequent kmers to replace the orginal sequence so that we can optimize the number of frequent kmers that do exist in the seqeunce. 
+
+Correction can be run with the following example command: `sh correction2.sh test_cases/correction/error_reads1.txt 2 2 1`
+
+
 ## Workflow:
 I took 3 files and combined them in sequential order to find the final inferred sequence of a sequence of various k-mers. I first took the reads files and removed any of the reads which contained contamination. I did this by running all the reads through the contamination.py file, which returns a list of contaminated reads. Once I removed all the contaminated reads, I determined the reads which I needed to correct. Because I do not know the actual length of the fully sequenced sampleRead.txt, I have to take in all the kmers derived from the reads to sequence to find the longest contig. I place decontaminated reads into the correction.py file, which replaces all infrequent kmers with frequent kmers throughout the reads. Now I have a list of decontaminated and corrected reads. Afterward, I generate kmers from this list of a specified length. These kmers are then placed into the debruijn.py file that then generates the longest contiguous segment that can be inferred from these kmers.
 
@@ -23,7 +46,6 @@ For the sampleReads.txt file, I used the parameters [10, 30, 17, 2, 2].
 - 17 = kmer length to determine seeding in correction 
 - 2 = threshold value to determine the frequency of common kmer values in correction
 - 2 = difference value for how much a replaceable kmer can differ by in correction
-
 
 ## Detecting Errors by optimizing variables for k (k-mer length) and t (threshold for frequent k-mers)
 
