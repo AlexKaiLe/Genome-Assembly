@@ -60,13 +60,14 @@ Values of
 average ungapped global alignment score of each true/corrected read pair = S<sub>K</sub> =
 <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/eq_1.png" alt="eq" height="200"/>
 
-![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png)
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png" alt="eq" height="300"/>
 
-![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/2.png)
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/2.png" alt="eq" height="300"/>
+
 
 note: can’t make St values 50 because it would be log(0) = undefined, thus any 50 values was turned into 49.999 to graph it
 
-## General trends do you observe in varying k and t
+## General trends observed in varying k and t
 For all combinations of K and T, we see a downward trend for the similarity score for lower amounts of K (ie. the kmers are smaller). However, when we increase the value of K, we see an increase in accuracy of similarity score for all values of T. In the graph, we also see that with lower K values, lower T values will result in an increase in the corrected results. However, at higher K values, a higher T value results in an increase in the similarity score. The only outlier to these cases is when T = 4 where it has the highest similarity score at higher values of K despite having a small T.
 
 These trends can also be observed in the second graph. However, because values below T=7 are optimized based on the coverage, we see that for all lower T values, the similarity score will increase despite the value of K. This makes sense for optimized values of T because having a lower threshold value will allow for more frequent kmers to replace the infrequent k-mers. A further explanation can be found in question 3.
