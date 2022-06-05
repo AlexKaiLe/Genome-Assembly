@@ -29,7 +29,7 @@ For the sampleReads.txt file, I used the parameters [10, 30, 17, 2, 2].
 
 Analyze the hiv-1_genome.txt that contains 9,181 bp RNA genome of HIV-1using unitary.m, which is a DNA scoring matrix. Simulate extraction of 50-mer reads from the HIV genome  where I mutated these reads randomly based on a 1% error rate
 
-P = ​​probability of number of reads covering a given position of the sequence
+P = probability of number of reads covering a given position of the sequence
 P=(e^(-a)a^k)/k! where a = N/(LG)
 To find the min number of reads covering the entire sequence 
 - K = 0 → no reads cover the entire sequence 
@@ -41,8 +41,6 @@ To find the min number of reads covering the entire sequence
 Ensure that at least 99.9% of the target sequence is expected to be covered
 1 - (e^(-a)a^k)/k!= 0.999
  
-<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">
-
 - 1 - (e^(-a)a^0)/0! = 0.999
 - 1 -e^(-a) = 0.999
 - 1 e^(-(NL)/G) = 0.999
@@ -60,12 +58,12 @@ Values of
 - max(St) = 50 where k = [17-25], t = 2
 
 S<sub>K</sub> = 
-![](images/eq_1.png)
+![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png)
 
+![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/eq_1.png)
 
-![](images/1.png)
+![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/2.png)
 
-![](images/2.png)
 note: can’t make St values 50 because it would be log(0) = undefined, thus any 50 values was turned into 49.999 to graph it
 
 ## General trends do you observe in varying k and t
@@ -85,7 +83,7 @@ However, when T = 4, we see that it outperforms all the other T values despite a
 
 At low values of k, we create a large list of kmers and thus, each kmer has a relatively high frequency where there is little difference between each k-mer. At high values of k, we create a smaller list of kmers and thus, each kmer has a relatively low frequency where there is a bigger difference between each k-mer. Larger kmers result in higher similarity score because they span a greater distance and have more indices to match when calculating the replaceable “frequent” k-mers. Furthermore, the number of frequent k-mers for a bigger k holds more importance since the k-mer is a longer sequence and needs to be matched exactly with another k-mer which statistically is hard to do with larger k values. Thus, when we replace an infrequent k-mer, we know that the frequent k-mer will most likely be more accurate for higher K values. As a result, we want to choose T values that optimize the similarity score when K is larger. In our case with HIV, we want to choose the T value that has the highest similarity score in the range 15-25. 
 
-![](images/3)
+![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/3.png)
 
 There is only one area where varying T for the same K does not produce a significant difference in correction efficiency. However, the majority of the similarity scores in general do not converge on a single point. The smallest difference in the 5 similarity scores for each T value happens around K = 25. The reason why the similarity scores converge on around this area for K values is because when K is really large, the number of frequent K-mers decreases. We have less frequent K-mers because K spans a large distance on the sequence and it is very hard to match these large sequences together. Thus, the number of frequent k-mers we can use to replace the infrequent k-mers is small. Since our d value is 2, the infrequent k-mer must only differ by 2 for frequent k-mer to replace it and with such a large k-mers, there are very few or no frequent k-mer that we can use to replace the infrequent k-mers with. Thus, with very few replacements as a result of the large k value, all the similarity scores converge near to 0, which means that it is similar to the mutated sequence. 
 
