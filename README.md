@@ -2,6 +2,7 @@
 
 ## Purpose and overview:
 
+The purpose of this program is to take in a file of k-mers and develop an optimal sequence derived from a De Bruijn graph. Before creating the De Bruijn graph, the k-mers are first decontaminated by known vectors and then any infrequent sub k-mers are then replaced with more frequent k-mers to ensure the integrity of the DNA samples that are given. Once all the k-mers are decontaminated and corrected, the k-mers are placed in a De Bruijn algorithm that finds the longest sequence for all the k-mers. The program was able to take 50-mer reads and reconstruct 16 reads of length 1260 of the Sars-Covid-2 receptor binding domain. 
 
 ## How to run the program:
 
@@ -80,8 +81,8 @@ Values of
 - max(Sk) = 49.99211977935382 where k = 22, t = 4
 - max(St) = 50 where k = [17-25], t = 2
 
-average ungapped global alignment score of each true/mutated = S<sub>M</sub>
-average ungapped global alignment score of each true/corrected read pair = S<sub>K</sub> =
+- average ungapped global alignment score of each true/mutated = S<sub>M</sub>
+- average ungapped global alignment score of each true/corrected read pair = S<sub>K</sub> =
 <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/eq_1.png" alt="eq" height="200"/>
 
 <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png" alt="eq" height="300"/>
