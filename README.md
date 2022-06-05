@@ -58,9 +58,9 @@ Values of
 - max(St) = 50 where k = [17-25], t = 2
 
 S<sub>K</sub> = 
-![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png)
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/eq_1.png" alt="eq" height="400"/>
 
-![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/eq_1.png)
+![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png)
 
 ![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/2.png)
 
