@@ -57,7 +57,7 @@ Values of
 - max(Sk) = 49.99211977935382 where k = 22, t = 4
 - max(St) = 50 where k = [17-25], t = 2
 
-S<sub>K</sub> = 
+average ungapped global alignment score of each true/corrected read pair = S<sub>K</sub> =
 <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/eq_1.png" alt="eq" height="200"/>
 
 ![](https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/1.png)
