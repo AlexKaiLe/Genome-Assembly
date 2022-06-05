@@ -11,8 +11,14 @@ There are 2 shell script files titled debruijn.sh and assembly.sh.
 ### debruijn.sh 
 To run the debruijn script, run the script in the terminal `$ sh debruijn.sh <reads.txt>` where reads.txt is a text file containing a list of DNA reads of constant length (separated by newlines). Example: `sh debruijn.sh test_cases/debruijn/reads2.txt`. The shell script calls a python file that reads in k-mers, convert them into the edges of an internal representation of a de Bruijn graph, simplify this internal representation, and finally print out all possible most likely (i.e., maximum-length) target sequences which can be inferred from the input reads. The program also generates a DOT file called debruijn.dot representing the fully simplified de Bruijn graph. The program simplifies the debruijn graph where every “singleton” is merged into one node and the edges in the resulting graph are updated to reflect the full overlap of the final node labels. 
 
+Example debruijn graph:
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/debruijn.png" alt="eq" height="200"/>
+
+
 ### assembly.sh
 To run the assembly script, run the script in the terminal `$ sh assembly.sh <reads.txt> <vector.txt> <contam-k> <k-mer length> <k> <t> <d>`. Example: `sh assembly.sh test_cases/assembly/sampleReads.txt test_cases/assembly/vector.txt 10 30 17 2 2`. The shell script calls a python file that reads in k-mers from reads and decontaminates the reads with a given vector. The program finds the longest contig of these sequences and returns that sequence.
+
+Output of assembly can be found at the bottom of the file.
 
 
 ## Contamination:
