@@ -13,7 +13,7 @@ To run the debruijn script, run the script in the terminal `$ sh debruijn.sh <re
 
 Example debruijn graph:
 
-<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/debruijn.png" alt="eq" height="500"/>
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/debruijn.png" alt="eq" height="600"/>
 
 
 ### assembly.sh
