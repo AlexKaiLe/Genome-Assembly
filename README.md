@@ -2,7 +2,7 @@
 
 ## Purpose and overview:
 
-The purpose of this program is to take in a file of k-mers and develop an optimal sequence derived from a De Bruijn graph. Before creating the De Bruijn graph, the k-mers are first decontaminated by known vectors and then any infrequent sub k-mers are then replaced with more frequent k-mers to ensure the integrity of the DNA samples that are given. Once all the k-mers are decontaminated and corrected, the k-mers are placed in a De Bruijn algorithm that finds the longest sequence for all the k-mers. The program was able to take 50-mer reads and reconstruct 16 reads of length 1260 of the Sars-Covid-2 receptor binding domain. 
+The purpose of this program is to take in a file of k-mers and develop an optimal sequence derived from a De Bruijn graph. Before creating the De Bruijn graph, the k-mers are first decontaminated by known vectors and then any infrequent sub k-mers are then replaced with more frequent k-mers to ensure the integrity of the DNA samples that are given. Once all the k-mers are decontaminated and corrected, the k-mers are placed in a De Bruijn algorithm that siplifies/condenses the graph to find the longest inferred sequence for the given k-mers. The program was able to take 50-mer reads and reconstruct 16 reads of length 1260 of the Sars-Covid-2 receptor binding domain. 
 
 ## How to run the program:
 
@@ -11,7 +11,7 @@ There are 2 shell script files titled debruijn.sh and assembly.sh.
 ### debruijn.sh 
 To run the debruijn script, run the script in the terminal `$ sh debruijn.sh <reads.txt>` where reads.txt is a text file containing a list of DNA reads of constant length (separated by newlines). Example: `sh debruijn.sh test_cases/debruijn/reads2.txt`. The shell script calls a python file that reads in k-mers, convert them into the edges of an internal representation of a de Bruijn graph, simplify this internal representation, and finally print out all possible most likely (i.e., maximum-length) target sequences which can be inferred from the input reads. The program also generates a DOT file called debruijn.dot representing the fully simplified de Bruijn graph. The program simplifies the debruijn graph where every “singleton” is merged into one node and the edges in the resulting graph are updated to reflect the full overlap of the final node labels. 
 
-Example debruijn graph:
+Example simplified debruijn graph:
 
 <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/debruijn.png" alt="eq" height="600"/>
 
