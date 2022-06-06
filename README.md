@@ -13,8 +13,7 @@ To run the debruijn script, run the script in the terminal `$ sh debruijn.sh <re
 
 Simple example of condensing a debruijn graph
 
-<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/5.png" alt="eq" height="600"/>
-<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/4.png" alt="eq" height="600"/>
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/5.png" alt="eq" height="600"/> <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/4.png" alt="eq" height="600"/>
 
 
 Example condensed complex debruijn graph:
