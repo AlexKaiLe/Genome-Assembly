@@ -11,7 +11,12 @@ There are 2 shell script files titled debruijn.sh and assembly.sh.
 ### debruijn.sh 
 To run the debruijn script, run the script in the terminal `$ sh debruijn.sh <reads.txt>` where reads.txt is a text file containing a list of DNA reads of constant length (separated by newlines). Example: `sh debruijn.sh test_cases/debruijn/reads2.txt`. The shell script calls a python file that reads in k-mers, convert them into the edges of an internal representation of a de Bruijn graph, simplify this internal representation, and finally print out all possible most likely (i.e., maximum-length) target sequences which can be inferred from the input reads. The program also generates a DOT file called debruijn.dot representing the fully simplified de Bruijn graph. The program simplifies the debruijn graph where every “singleton” is merged into one node and the edges in the resulting graph are updated to reflect the full overlap of the final node labels. 
 
-Example simplified debruijn graph:
+Simple example of condensing a debruijn graph
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/4.png" alt="eq" height="600"/>
+<img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/5.png" alt="eq" height="600"/>
+
+
+Example condensed complex debruijn graph:
 
 <img src="https://github.com/AlexKaiLe/Genome-Assembly/blob/main/images/debruijn.png" alt="eq" height="600"/>
 
