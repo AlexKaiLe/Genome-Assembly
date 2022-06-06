@@ -2,7 +2,7 @@
 
 ## Purpose and overview:
 
-The purpose of this program is to take in a file of k-mers and develop an optimal sequence derived from a De Bruijn graph. Before creating the De Bruijn graph, the k-mers are first decontaminated by known vectors and then any infrequent sub k-mers are then replaced with more frequent k-mers to ensure the integrity of the DNA samples that are given. Once all the k-mers are decontaminated and corrected, the k-mers are placed in a De Bruijn algorithm that siplifies/condenses the graph to find the longest inferred sequence for the given k-mers. The program was able to take 50-mer reads and reconstruct 16 reads of length 1260 of the Sars-Covid-2 receptor binding domain. 
+The purpose of this program is to take in a file of k-mers and develop an optimal sequence derived from a De Bruijn graph. Before creating the De Bruijn graph, the k-mers are first decontaminated by known vectors and then any infrequent sub k-mers are then replaced with more frequent k-mers to ensure the integrity of the DNA samples that are given. Decontamination is performed with BLAST like seeding and extension. Once all the k-mers are decontaminated and corrected, the k-mers are placed in a De Bruijn algorithm that siplifies/condenses the graph to find the longest inferred sequence for the given k-mers. The program was able to take 50-mer reads and reconstruct 16 reads of length 1260 of the Sars-Covid-2 receptor binding domain. 
 
 ## How to run the program:
 
